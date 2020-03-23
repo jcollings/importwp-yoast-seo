@@ -27,7 +27,6 @@ class ServiceProvider extends \ImportWP\ServiceProvider
         // display
         $this->event_handler->listen('template.data_groups', [$yoast_fields, 'data_groups']);
         $this->event_handler->listen('template.fields', [$yoast_fields, 'fields']);
-        $this->event_handler->listen('template.field_option_callbacks', [$yoast_fields, 'field_options']);
 
         // save
         $this->event_handler->listen('template.pre_process', [$yoast_fields, 'pre_process']);

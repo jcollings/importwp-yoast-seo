@@ -17,13 +17,6 @@ class YoastFields
         ]);
     }
 
-    public function field_options($callbacks, Template $template)
-    {
-        $callbacks['yoast.test_1'] = [$this, 'yoast_test_callback_1'];
-        $callbacks['yoast.test_2'] = [$this, 'yoast_test_callback_2'];
-        return $callbacks;
-    }
-
     public function fields($fields, Template $template)
     {
         $mapper = $template->get_mapper();
