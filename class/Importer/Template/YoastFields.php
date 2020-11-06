@@ -17,7 +17,7 @@ class YoastFields
         ]);
     }
 
-    public function fields($fields, Template $template)
+    public function fields($fields, Template $template, ImporterModel $importer_model)
     {
         $mapper = $template->get_mapper();
 
