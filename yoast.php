@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Plugin Name: ImportWP - Yoast SEO Importer Addon
+ * Plugin Name: Import WP - Yoast SEO Importer Addon
  * Plugin URI: https://www.importwp.com
- * Description: Allow ImportWP to import Yoast SEO fields.
+ * Description: Allow Import WP to import Yoast SEO fields.
  * Author: James Collings <james@jclabs.co.uk>
- * Version: 2.0.23 
+ * Version: _STABLE_TAG_ 
  * Author URI: https://www.importwp.com
  * Network: True
  */
@@ -14,7 +14,7 @@ add_action('admin_init', 'iwp_yoast_check');
 
 function iwp_yoast_requirements_met()
 {
-    return false === (is_admin() && current_user_can('activate_plugins') &&  (!function_exists('wpseo_init') || (!function_exists('import_wp_pro') && !function_exists('import_wp')) || version_compare(IWP_VERSION, '2.0.21', '<')));
+    return false === (is_admin() && current_user_can('activate_plugins') &&  (!function_exists('wpseo_init') || (!function_exists('import_wp_pro') && !function_exists('import_wp')) || version_compare(IWP_VERSION, '2.5.0', '<')));
 }
 
 function iwp_yoast_check()
@@ -39,14 +39,23 @@ function iwp_yoast_setup()
 
     $base_path = dirname(__FILE__);
 
-    require_once $base_path . '/class/autoload.php';
     require_once $base_path . '/setup.php';
+
+    // Install updater
+    if (file_exists($base_path . '/updater.php') && !class_exists('IWP_Updater')) {
+        require_once $base_path . '/updater.php';
+    }
+
+    if (class_exists('IWP_Updater')) {
+        $updater = new IWP_Updater(__FILE__, 'importwp-yoast-seo');
+        $updater->initialize();
+    }
 }
 add_action('plugins_loaded', 'iwp_yoast_setup', 9);
 
 function iwp_yoast_notice()
 {
     echo '<div class="error">';
-    echo '<p><strong>ImportWP - Yoast SEO Importer Addon</strong> requires that you have <strong>ImportWP v2.0.21 or newer</strong>, and <strong>Yoast SEO</strong> installed.</p>';
+    echo '<p><strong>Import WP - Yoast SEO Importer Addon</strong> requires that you have <strong>Import WP v2.5.0 or newer</strong>, and <strong>Yoast SEO</strong> installed.</p>';
     echo '</div>';
 }

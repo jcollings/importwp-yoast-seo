@@ -1,10 +1,14 @@
-# ImportWP Yoast SEO Settings Importer
+# Import WP Yoast SEO Settings Importer
+
+Requires Import WP: 2.5.0
+
+**Version: 2.1.0**
 
 ![Yoast SEO Settings Importer](./assets/iwp-addon-yoast.png)
 
 ## Description
 
-ImportWP Yoast SEO Settings Importer Addon adds extra fields to Posts, Pages, and Custom Post Types to allow for importing extra fields such as opengraph fields and images, meta description and keywords used by Yoast / WordPress SEO plugin.
+Import WP Yoast SEO Settings Importer Addon adds extra fields to Posts, Pages, and Custom Post Types to allow for importing extra fields such as opengraph fields and images, meta description and keywords used by Yoast / WordPress SEO plugin.
 
 ## Installation
 
