@@ -5,7 +5,7 @@
  * Plugin URI: https://www.importwp.com
  * Description: Allow Import WP to import Yoast SEO fields.
  * Author: James Collings <james@jclabs.co.uk>
- * Version: _STABLE_TAG_ 
+ * Version: 2.1.1 
  * Author URI: https://www.importwp.com
  * Network: True
  */
