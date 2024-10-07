@@ -2,7 +2,7 @@
 
 Requires Import WP: 2.5.0
 
-**Version: 2.1.1**
+**Version: 2.1.2**
 
 ![Yoast SEO Settings Importer](./assets/iwp-addon-yoast.png)
 
@@ -24,3 +24,7 @@ The Yoast SEO Settings Importer Addon can currently only be installed by downloa
 ## Screenshots
 
 ## Changelog
+
+### 2.1.2
+
+* ADD - Add yoast export fields to taxonomies.
