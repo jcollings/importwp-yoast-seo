@@ -307,3 +307,53 @@ function iwp_yoast_save_wpseo_is_cornerstone($api)
 
     iwp_yoast_save_meta($api, '_yoast_wpseo_is_cornerstone', [], $value);
 }
+
+/**
+ * Add field list to exporter
+ */
+add_filter('iwp/exporter/taxonomy/fields', function ($fields, $template_args) {
+
+    $fields['children']['yoast'] = [
+        'key' => 'yoast',
+        'label' => 'Yoast',
+        'loop' => false,
+        'fields' => [
+            'wpseo_title',
+            'wpseo_desc',
+            'wpseo_bctitle',
+            'wpseo_focuskw',
+            'wpseo_opengraph-title',
+            'wpseo_opengraph-description',
+            'wpseo_opengraph-image',
+            'wpseo_opengraph-image-id',
+            'wpseo_twitter-title',
+            'wpseo_twitter-description',
+            'wpseo_twitter-image',
+            'wpseo_twitter-image-id',
+            'wpseo_canonical',
+            'wpseo_noindex',
+        ],
+        'children' => []
+    ];
+
+    return $fields;
+}, 10, 2);
+
+/**
+ * Populate exporter field with data
+ */
+add_filter('iwp/exporter/taxonomy/setup_data', function ($record, $template_args) {
+
+    $term_id = $record['term_id'];
+    $option_key = 'wpseo_taxonomy_meta';
+    $wpseo_taxonomy_meta = (array) get_option($option_key);
+
+    $data = [];
+
+    if (isset($wpseo_taxonomy_meta[$template_args], $wpseo_taxonomy_meta[$template_args][$term_id])) {
+        $data = $wpseo_taxonomy_meta[$template_args][$term_id];
+    }
+
+    $record['yoast'] = $data;
+    return $record;
+}, 10, 2);
